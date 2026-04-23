@@ -7,7 +7,7 @@ function isBrowser() {
 export function loadReview(): string[] {
   if (!isBrowser()) return [];
 
-  const raw = localStorage.getItem(REVIEW_KEY);
+  const raw = window.localStorage.getItem(REVIEW_KEY);
   if (!raw) return [];
 
   try {
@@ -20,5 +20,5 @@ export function loadReview(): string[] {
 
 export function saveReview(items: string[]) {
   if (!isBrowser()) return;
-  localStorage.setItem(REVIEW_KEY, JSON.stringify(items));
+  window.localStorage.setItem(REVIEW_KEY, JSON.stringify(items));
 }

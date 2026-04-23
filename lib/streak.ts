@@ -18,7 +18,7 @@ function getYesterdayString() {
 export function loadStreak(): number {
   if (!isBrowser()) return 0;
 
-  const raw = localStorage.getItem(STREAK_KEY);
+  const raw = window.localStorage.getItem(STREAK_KEY);
   return raw ? Number(raw) : 0;
 }
 
@@ -28,7 +28,7 @@ export function updateStreak(): number {
   const today = getTodayString();
   const yesterday = getYesterdayString();
 
-  const lastDate = localStorage.getItem(LAST_DATE_KEY);
+  const lastDate = window.localStorage.getItem(LAST_DATE_KEY);
   let streak = loadStreak();
 
   if (lastDate === today) return streak;
@@ -39,8 +39,8 @@ export function updateStreak(): number {
     streak = 1;
   }
 
-  localStorage.setItem(STREAK_KEY, String(streak));
-  localStorage.setItem(LAST_DATE_KEY, today);
+  window.localStorage.setItem(STREAK_KEY, String(streak));
+  window.localStorage.setItem(LAST_DATE_KEY, today);
 
   return streak;
 }
