@@ -1,6 +1,12 @@
 const REVIEW_KEY = "pingpong-review";
 
+function isBrowser() {
+  return typeof window !== "undefined";
+}
+
 export function loadReview(): string[] {
+  if (!isBrowser()) return [];
+
   const raw = localStorage.getItem(REVIEW_KEY);
   if (!raw) return [];
 
@@ -13,5 +19,6 @@ export function loadReview(): string[] {
 }
 
 export function saveReview(items: string[]) {
+  if (!isBrowser()) return;
   localStorage.setItem(REVIEW_KEY, JSON.stringify(items));
 }

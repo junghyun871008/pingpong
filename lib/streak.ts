@@ -1,6 +1,10 @@
 const STREAK_KEY = "pingpong-streak";
 const LAST_DATE_KEY = "pingpong-last-date";
 
+function isBrowser() {
+  return typeof window !== "undefined";
+}
+
 function getTodayString() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -12,11 +16,15 @@ function getYesterdayString() {
 }
 
 export function loadStreak(): number {
+  if (!isBrowser()) return 0;
+
   const raw = localStorage.getItem(STREAK_KEY);
   return raw ? Number(raw) : 0;
 }
 
 export function updateStreak(): number {
+  if (!isBrowser()) return 0;
+
   const today = getTodayString();
   const yesterday = getYesterdayString();
 

@@ -1,18 +1,36 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import HomeScreen from "@/components/home/HomeScreen";
 import MissionScreen from "@/components/mission/MissionScreen";
 import FreeTalkScreen from "@/components/freetalk/FreeTalkScreen";
 import { pickRandomMission } from "@/lib/mission";
 import { getInitialReview, getMergedReview } from "@/lib/review";
 import { updateStreak, loadStreak } from "@/lib/streak";
+import type { Mission } from "@/types/mission";
 
 export default function Page() {
   const [screen, setScreen] = useState<"home" | "mission" | "complete" | "freetalk">("home");
-  const [reviewItems, setReviewItems] = useState<string[]>(getInitialReview());
-  const [streak, setStreak] = useState<number>(loadStreak());
-  const mission = useMemo(() => pickRandomMission(), []);
+  const [reviewItems, setReviewItems] = useState<string[]>([]);
+  const [streak, setStreak] = useState<number>(0);
+  const [mission, setMission] = useState<Mission | null>(null);
+
+  useEffect(() => {
+    setReviewItems(getInitialReview());
+    setStreak(loadStreak());
+    setMission(pickRandomMission());
+  }, []);
+
+  if (!mission) {
+    return (
+      <div className="min-h-screen bg-slate-100 p-4 md:p-8">
+        <div className="mx-auto max-w-4xl rounded-3xl bg-white p-6 shadow-xl">
+          <h1 className="text-2xl font-bold">PingPong</h1>
+          <p className="mt-2 text-slate-600">불러오는 중...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-100 p-4 md:p-8">
