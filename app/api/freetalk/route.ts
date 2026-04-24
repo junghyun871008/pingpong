@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
       : "";
 
     const response = await client.responses.create({
-      model: "gpt-4o",
+      model: "gpt-4o-mini",
       input: [
         { role: "system", content: SYSTEM_PROMPT + historyText },
         { role: "user", content: "User sentence: " + input },
