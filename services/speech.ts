@@ -1,38 +1,17 @@
 let recognition: any = null;
 let isListening = false;
-let micReady = false;
 
-export async function prepareMic() {
-  if (typeof window === "undefined") return false;
-
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    stream.getTracks().forEach((track) => track.stop());
-    micReady = true;
-    return true;
-  } catch {
-    micReady = false;
-    alert("마이크 권한을 허용해야 말하기 기능을 사용할 수 있어요.");
-    return false;
-  }
-}
-
-export async function startSpeechRecognition(
+export function startSpeechRecognition(
   onResult: (text: string) => void,
   onListeningChange?: (listening: boolean) => void
 ) {
   if (typeof window === "undefined") return;
 
-  if (!micReady) {
-    const ok = await prepareMic();
-    if (!ok) return;
-  }
-
   const SpeechRecognition =
     (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
 
   if (!SpeechRecognition) {
-    alert("이 브라우저는 음성 인식을 지원하지 않습니다. 크롬이나 삼성인터넷에서 열어주세요.");
+    alert("이 브라우저는 음성 인식을 지원하지 않아요. 크롬에서 열어주세요.");
     return;
   }
 
@@ -52,13 +31,28 @@ export async function startSpeechRecognition(
       if (text.trim()) onResult(text.trim());
     };
 
+    recognition.onerror = (event: any) => {
+      console.log("Speech recognition error:", event.error);
+
+      if (event.error === "not-allowed") {
+        alert("마이크 권한이 차단되어 있어요. 크롬 주소창 자물쇠에서 마이크를 허용해주세요.");
+      }
+
+      if (event.error === "audio-capture") {
+        alert("마이크를 찾을 수 없어요. 다른 앱이 마이크를 사용 중인지 확인해주세요.");
+      }
+
+      isListening = false;
+      onListeningChange?.(false);
+    };
+
     recognition.onend = () => {
       if (isListening) {
         setTimeout(() => {
           try {
             recognition.start();
           } catch {}
-        }, 300);
+        }, 500);
       }
     };
   }
