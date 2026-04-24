@@ -1,5 +1,7 @@
 "use client";
 
+import { unlockAudio } from "@/services/audio";
+import { prepareMic } from "@/services/speech";
 import { useEffect, useState } from "react";
 import HomeScreen from "@/components/home/HomeScreen";
 import MissionScreen from "@/components/mission/MissionScreen";
@@ -40,6 +42,10 @@ export default function Page() {
             title={mission.title}
             reviewItems={reviewItems}
             streak={streak}
+            onReady={async () => {
+               unlockAudio();
+               await prepareMic();
+            }}
             onStart={() => setScreen("mission")}
           />
         )}
