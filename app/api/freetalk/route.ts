@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 
-const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const SYSTEM_PROMPT = `You are a friendly English conversation partner for an absolute beginner.
 
@@ -16,11 +14,7 @@ Your job:
 
 Rules:
 - This is speaking practice, not writing practice.
-- Be warm and simple.
-- Keep the corrected sentence short.
-- Keep the Korean comment under one sentence.
-- Keep the next question very easy.
-- No long responses.
+- Be warm and simple. Keep sentences short.
 - Output JSON only.
 
 JSON format:
@@ -31,32 +25,30 @@ JSON format:
 }`;
 
 function safeJsonParse(text: string) {
-  try {
-    return JSON.parse(text);
-  } catch {
-    return null;
-  }
+  try { return JSON.parse(text); } catch { return null; }
 }
 
 export async function POST(req: NextRequest) {
   try {
-    const { input } = await req.json();
-
+    const { input, history } = await req.json();
     if (!input || typeof input !== "string") {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
     }
 
+    const historyText = Array.isArray(history) && history.length > 0
+      ? "\n\nPrevious conversation:\n" +
+        history.slice(-6)
+          .map((msg: { speaker: string; text: string }) =>
+            msg.speaker === "You" ? "User: " + msg.text : "AI: " + msg.text
+          )
+          .join("\n")
+      : "";
+
     const response = await client.responses.create({
-      model: "gpt-5",
+      model: "gpt-4o",
       input: [
-        {
-          role: "system",
-          content: SYSTEM_PROMPT,
-        },
-        {
-          role: "user",
-          content: `User sentence: ${input}`,
-        },
+        { role: "system", content: SYSTEM_PROMPT + historyText },
+        { role: "user", content: "User sentence: " + input },
       ],
     });
 
@@ -65,11 +57,7 @@ export async function POST(req: NextRequest) {
 
     if (!parsed?.corrected || !parsed?.note) {
       return NextResponse.json(
-        {
-          corrected: input,
-          note: "좋아요.",
-          nextQuestion: "How are you today?",
-        },
+        { corrected: input, note: "좋아요.", nextQuestion: "How are you today?" },
         { status: 200 }
       );
     }
@@ -81,11 +69,7 @@ export async function POST(req: NextRequest) {
     });
   } catch {
     return NextResponse.json(
-      {
-        corrected: "",
-        note: "AI correction failed",
-        nextQuestion: "How are you today?",
-      },
+      { corrected: "", note: "AI correction failed", nextQuestion: "How are you today?" },
       { status: 500 }
     );
   }

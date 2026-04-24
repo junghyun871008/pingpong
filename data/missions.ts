@@ -1,126 +1,514 @@
 import type { Mission } from "@/types/mission";
 
 export const missions: Mission[] = [
+  // ── 1. 아침 인사
   {
     id: 1,
     title: "아침 인사",
     turns: [
-      { speaker: "AI", text: "Good morning." },
-      { speaker: "USER", hint: "Good morning." },
-
+      { speaker: "AI", text: "Good morning!" },
+      { speaker: "USER", hint: "Good morning!" },
       { speaker: "AI", text: "How are you today?" },
-      { speaker: "USER", hint: "I'm good / I'm tired." },
-
+      { speaker: "USER", hint: "I'm good. / I'm tired." },
       { speaker: "AI", text: "What do you want this morning?" },
       { speaker: "USER", hint: "I want coffee." },
-
-      { speaker: "AI", text: "Sounds good." },
+      { speaker: "AI", text: "Sounds good. Have a great day!" },
     ],
-    review: [
-      "Good morning.",
-      "How are you today?",
-      "I'm good.",
-      "I want coffee.",
-    ],
+    review: ["Good morning!", "How are you today?", "I'm good.", "I want coffee."],
     level: "very_easy",
     tags: ["morning", "greeting"],
   },
-
+  // ── 2. 커피
   {
     id: 2,
     title: "커피",
     turns: [
       { speaker: "AI", text: "Do you like coffee?" },
       { speaker: "USER", hint: "Yes, I do." },
-
       { speaker: "AI", text: "What kind of coffee do you like?" },
       { speaker: "USER", hint: "I like americano." },
-
       { speaker: "AI", text: "When do you drink coffee?" },
       { speaker: "USER", hint: "I drink it in the morning." },
-
-      { speaker: "AI", text: "Nice. Me too." },
+      { speaker: "AI", text: "Nice. Me too!" },
     ],
-    review: [
-      "Do you like coffee?",
-      "Yes, I do.",
-      "I like americano.",
-      "I drink it in the morning.",
-    ],
+    review: ["Yes, I do.", "I like americano.", "I drink it in the morning."],
     level: "very_easy",
     tags: ["coffee", "daily"],
   },
-
+  // ── 3. 좋아하는 음식
   {
     id: 3,
-    title: "좋아하는 것",
+    title: "좋아하는 음식",
     turns: [
-      { speaker: "AI", text: "What do you like?" },
-      { speaker: "USER", hint: "I like tomatoes." },
-
-      { speaker: "AI", text: "Why do you like them?" },
-      { speaker: "USER", hint: "Because they are good." },
-
-      { speaker: "AI", text: "Do you eat them often?" },
-      { speaker: "USER", hint: "Yes, I do." },
-
-      { speaker: "AI", text: "That's nice." },
+      { speaker: "AI", text: "What food do you like?" },
+      { speaker: "USER", hint: "I like pizza." },
+      { speaker: "AI", text: "Why do you like it?" },
+      { speaker: "USER", hint: "Because it's delicious." },
+      { speaker: "AI", text: "Do you eat it often?" },
+      { speaker: "USER", hint: "Yes, about once a week." },
+      { speaker: "AI", text: "That's great!" },
     ],
-    review: [
-      "What do you like?",
-      "I like tomatoes.",
-      "Because they are good.",
-      "Yes, I do.",
-    ],
+    review: ["I like pizza.", "Because it's delicious.", "Yes, about once a week."],
     level: "very_easy",
-    tags: ["preference", "food"],
+    tags: ["food", "preference"],
   },
-
+  // ── 4. 사는 곳
   {
     id: 4,
     title: "사는 곳",
     turns: [
       { speaker: "AI", text: "Where do you live?" },
-      { speaker: "USER", hint: "I live in Busan." },
-
-      { speaker: "AI", text: "Do you like Busan?" },
+      { speaker: "USER", hint: "I live in Seoul." },
+      { speaker: "AI", text: "Do you like it there?" },
       { speaker: "USER", hint: "Yes, I do." },
-
       { speaker: "AI", text: "What do you like about it?" },
-      { speaker: "USER", hint: "I like the beach." },
-
-      { speaker: "AI", text: "That sounds great." },
+      { speaker: "USER", hint: "I like the food." },
+      { speaker: "AI", text: "Seoul sounds amazing!" },
     ],
-    review: [
-      "I live in Busan.",
-      "Yes, I do.",
-      "I like the beach.",
-    ],
+    review: ["I live in Seoul.", "Yes, I do.", "I like the food."],
     level: "very_easy",
     tags: ["intro", "place"],
   },
-
+  // ── 5. 점심 메뉴
   {
     id: 5,
-    title: "점심",
+    title: "점심 메뉴",
     turns: [
       { speaker: "AI", text: "What do you want for lunch?" },
-      { speaker: "USER", hint: "I want pasta." },
-
-      { speaker: "AI", text: "Do you like pasta?" },
-      { speaker: "USER", hint: "Yes, I do." },
-
+      { speaker: "USER", hint: "I want ramen." },
+      { speaker: "AI", text: "Do you like spicy food?" },
+      { speaker: "USER", hint: "Yes, I love spicy food." },
       { speaker: "AI", text: "What do you drink with it?" },
       { speaker: "USER", hint: "I drink water." },
-
-      { speaker: "AI", text: "Sounds good." },
+      { speaker: "AI", text: "Enjoy your lunch!" },
     ],
-    review: [
-      "I want pasta.",
-      "Yes, I do.",
-      "I drink water.",
-    ],
+    review: ["I want ramen.", "Yes, I love spicy food.", "I drink water."],
     level: "very_easy",
     tags: ["food", "lunch"],
+  },
+  // ── 6. 날씨
+  {
+    id: 6,
+    title: "날씨",
+    turns: [
+      { speaker: "AI", text: "How is the weather today?" },
+      { speaker: "USER", hint: "It's sunny today." },
+      { speaker: "AI", text: "Do you like sunny weather?" },
+      { speaker: "USER", hint: "Yes, I love sunny days." },
+      { speaker: "AI", text: "What do you do on sunny days?" },
+      { speaker: "USER", hint: "I go for a walk." },
+      { speaker: "AI", text: "That sounds wonderful!" },
+    ],
+    review: ["It's sunny today.", "Yes, I love sunny days.", "I go for a walk."],
+    level: "very_easy",
+    tags: ["weather", "daily"],
+  },
+  // ── 7. 가족 소개
+  {
+    id: 7,
+    title: "가족 소개",
+    turns: [
+      { speaker: "AI", text: "Do you have any brothers or sisters?" },
+      { speaker: "USER", hint: "Yes, I have one sister." },
+      { speaker: "AI", text: "Is she older or younger?" },
+      { speaker: "USER", hint: "She is younger than me." },
+      { speaker: "AI", text: "What does she do?" },
+      { speaker: "USER", hint: "She is a student." },
+      { speaker: "AI", text: "That's nice!" },
+    ],
+    review: ["I have one sister.", "She is younger than me.", "She is a student."],
+    level: "very_easy",
+    tags: ["family", "intro"],
+  },
+  // ── 8. 취미
+  {
+    id: 8,
+    title: "취미",
+    turns: [
+      { speaker: "AI", text: "What do you do in your free time?" },
+      { speaker: "USER", hint: "I watch movies." },
+      { speaker: "AI", text: "What kind of movies do you like?" },
+      { speaker: "USER", hint: "I like action movies." },
+      { speaker: "AI", text: "What is your favorite movie?" },
+      { speaker: "USER", hint: "My favorite is Avengers." },
+      { speaker: "AI", text: "Great choice!" },
+    ],
+    review: ["I watch movies.", "I like action movies.", "My favorite is Avengers."],
+    level: "easy",
+    tags: ["hobby", "movie"],
+  },
+  // ── 9. 출근길
+  {
+    id: 9,
+    title: "출근길",
+    turns: [
+      { speaker: "AI", text: "How do you get to work?" },
+      { speaker: "USER", hint: "I take the subway." },
+      { speaker: "AI", text: "How long does it take?" },
+      { speaker: "USER", hint: "It takes about 30 minutes." },
+      { speaker: "AI", text: "What do you do on the subway?" },
+      { speaker: "USER", hint: "I listen to music." },
+      { speaker: "AI", text: "That's a great way to start the day!" },
+    ],
+    review: ["I take the subway.", "It takes about 30 minutes.", "I listen to music."],
+    level: "easy",
+    tags: ["commute", "work"],
+  },
+  // ── 10. 퇴근 후
+  {
+    id: 10,
+    title: "퇴근 후",
+    turns: [
+      { speaker: "AI", text: "What do you usually do after work?" },
+      { speaker: "USER", hint: "I go home and rest." },
+      { speaker: "AI", text: "Do you cook dinner?" },
+      { speaker: "USER", hint: "Sometimes I cook." },
+      { speaker: "AI", text: "What do you like to cook?" },
+      { speaker: "USER", hint: "I like to cook Korean food." },
+      { speaker: "AI", text: "Sounds delicious!" },
+    ],
+    review: ["I go home and rest.", "Sometimes I cook.", "I like to cook Korean food."],
+    level: "easy",
+    tags: ["afterwork", "daily"],
+  },
+  // ── 11. 주말 계획
+  {
+    id: 11,
+    title: "주말 계획",
+    turns: [
+      { speaker: "AI", text: "What are you doing this weekend?" },
+      { speaker: "USER", hint: "I'm going to meet friends." },
+      { speaker: "AI", text: "Where are you going?" },
+      { speaker: "USER", hint: "We're going to a cafe." },
+      { speaker: "AI", text: "That sounds fun. What time?" },
+      { speaker: "USER", hint: "At 2 o'clock." },
+      { speaker: "AI", text: "Have a great time!" },
+    ],
+    review: ["I'm going to meet friends.", "We're going to a cafe.", "At 2 o'clock."],
+    level: "easy",
+    tags: ["weekend", "plans"],
+  },
+  // ── 12. 쇼핑
+  {
+    id: 12,
+    title: "쇼핑",
+    turns: [
+      { speaker: "AI", text: "Do you like shopping?" },
+      { speaker: "USER", hint: "Yes, I like shopping." },
+      { speaker: "AI", text: "Where do you usually shop?" },
+      { speaker: "USER", hint: "I shop online." },
+      { speaker: "AI", text: "What did you buy last time?" },
+      { speaker: "USER", hint: "I bought a shirt." },
+      { speaker: "AI", text: "Nice!" },
+    ],
+    review: ["Yes, I like shopping.", "I shop online.", "I bought a shirt."],
+    level: "easy",
+    tags: ["shopping", "daily"],
+  },
+  // ── 13. 건강 관리
+  {
+    id: 13,
+    title: "건강 관리",
+    turns: [
+      { speaker: "AI", text: "Do you exercise?" },
+      { speaker: "USER", hint: "Yes, I exercise." },
+      { speaker: "AI", text: "What kind of exercise do you do?" },
+      { speaker: "USER", hint: "I go jogging." },
+      { speaker: "AI", text: "How often do you jog?" },
+      { speaker: "USER", hint: "Three times a week." },
+      { speaker: "AI", text: "That's really healthy!" },
+    ],
+    review: ["Yes, I exercise.", "I go jogging.", "Three times a week."],
+    level: "easy",
+    tags: ["health", "exercise"],
+  },
+  // ── 14. 스마트폰 사용
+  {
+    id: 14,
+    title: "스마트폰 사용",
+    turns: [
+      { speaker: "AI", text: "How do you use your phone?" },
+      { speaker: "USER", hint: "I use it to watch videos." },
+      { speaker: "AI", text: "What apps do you use often?" },
+      { speaker: "USER", hint: "I use YouTube and Instagram." },
+      { speaker: "AI", text: "How many hours a day?" },
+      { speaker: "USER", hint: "About two hours." },
+      { speaker: "AI", text: "Sounds like me!" },
+    ],
+    review: ["I use it to watch videos.", "I use YouTube and Instagram.", "About two hours."],
+    level: "easy",
+    tags: ["phone", "tech"],
+  },
+  // ── 15. 여행 계획
+  {
+    id: 15,
+    title: "여행 계획",
+    turns: [
+      { speaker: "AI", text: "Do you like traveling?" },
+      { speaker: "USER", hint: "Yes, I love traveling." },
+      { speaker: "AI", text: "Where do you want to go?" },
+      { speaker: "USER", hint: "I want to go to Japan." },
+      { speaker: "AI", text: "Why Japan?" },
+      { speaker: "USER", hint: "Because the food is amazing." },
+      { speaker: "AI", text: "Japan is wonderful!" },
+    ],
+    review: ["Yes, I love traveling.", "I want to go to Japan.", "Because the food is amazing."],
+    level: "easy",
+    tags: ["travel", "preference"],
+  },
+  // ── 16. 음악 취향
+  {
+    id: 16,
+    title: "음악 취향",
+    turns: [
+      { speaker: "AI", text: "Do you like music?" },
+      { speaker: "USER", hint: "Yes, I listen to music every day." },
+      { speaker: "AI", text: "What kind of music do you like?" },
+      { speaker: "USER", hint: "I like K-pop." },
+      { speaker: "AI", text: "Who is your favorite singer?" },
+      { speaker: "USER", hint: "My favorite is BTS." },
+      { speaker: "AI", text: "Great taste!" },
+    ],
+    review: ["I listen to music every day.", "I like K-pop.", "My favorite is BTS."],
+    level: "easy",
+    tags: ["music", "hobby"],
+  },
+  // ── 17. 직장 소개
+  {
+    id: 17,
+    title: "직장 소개",
+    turns: [
+      { speaker: "AI", text: "What do you do for work?" },
+      { speaker: "USER", hint: "I work at a company." },
+      { speaker: "AI", text: "What kind of company?" },
+      { speaker: "USER", hint: "It's an IT company." },
+      { speaker: "AI", text: "Do you like your job?" },
+      { speaker: "USER", hint: "Yes, it's interesting." },
+      { speaker: "AI", text: "That's great!" },
+    ],
+    review: ["I work at a company.", "It's an IT company.", "Yes, it's interesting."],
+    level: "easy",
+    tags: ["work", "intro"],
+  },
+  // ── 18. 카페에서
+  {
+    id: 18,
+    title: "카페에서",
+    turns: [
+      { speaker: "AI", text: "Do you go to cafes often?" },
+      { speaker: "USER", hint: "Yes, I go about twice a week." },
+      { speaker: "AI", text: "What do you usually order?" },
+      { speaker: "USER", hint: "I order an iced Americano." },
+      { speaker: "AI", text: "Do you work or relax at cafes?" },
+      { speaker: "USER", hint: "I usually work there." },
+      { speaker: "AI", text: "Cafes are great for working!" },
+    ],
+    review: ["I go about twice a week.", "I order an iced Americano.", "I usually work there."],
+    level: "easy",
+    tags: ["cafe", "daily"],
+  },
+  // ── 19. 좋아하는 계절
+  {
+    id: 19,
+    title: "좋아하는 계절",
+    turns: [
+      { speaker: "AI", text: "What is your favorite season?" },
+      { speaker: "USER", hint: "My favorite season is autumn." },
+      { speaker: "AI", text: "Why do you like autumn?" },
+      { speaker: "USER", hint: "Because the weather is cool." },
+      { speaker: "AI", text: "What do you do in autumn?" },
+      { speaker: "USER", hint: "I go hiking." },
+      { speaker: "AI", text: "Autumn hiking is lovely!" },
+    ],
+    review: ["My favorite season is autumn.", "Because the weather is cool.", "I go hiking."],
+    level: "easy",
+    tags: ["season", "preference"],
+  },
+  // ── 20. 저녁 식사
+  {
+    id: 20,
+    title: "저녁 식사",
+    turns: [
+      { speaker: "AI", text: "What did you have for dinner?" },
+      { speaker: "USER", hint: "I had bibimbap." },
+      { speaker: "AI", text: "Did you cook it yourself?" },
+      { speaker: "USER", hint: "No, I ordered delivery." },
+      { speaker: "AI", text: "Was it good?" },
+      { speaker: "USER", hint: "Yes, it was really good." },
+      { speaker: "AI", text: "I love bibimbap too!" },
+    ],
+    review: ["I had bibimbap.", "No, I ordered delivery.", "Yes, it was really good."],
+    level: "easy",
+    tags: ["food", "dinner"],
+  },
+  // ── 21. 영어 공부법
+  {
+    id: 21,
+    title: "영어 공부법",
+    turns: [
+      { speaker: "AI", text: "How do you study English?" },
+      { speaker: "USER", hint: "I use an app." },
+      { speaker: "AI", text: "How long do you study every day?" },
+      { speaker: "USER", hint: "About 20 minutes." },
+      { speaker: "AI", text: "What is the hardest part?" },
+      { speaker: "USER", hint: "Speaking is the hardest." },
+      { speaker: "AI", text: "Keep practicing — you're doing great!" },
+    ],
+    review: ["I use an app.", "About 20 minutes.", "Speaking is the hardest."],
+    level: "easy",
+    tags: ["study", "english"],
+  },
+  // ── 22. 친구
+  {
+    id: 22,
+    title: "친구",
+    turns: [
+      { speaker: "AI", text: "Do you have many friends?" },
+      { speaker: "USER", hint: "I have a few close friends." },
+      { speaker: "AI", text: "What do you do with your friends?" },
+      { speaker: "USER", hint: "We eat and talk together." },
+      { speaker: "AI", text: "Do you meet often?" },
+      { speaker: "USER", hint: "We meet on weekends." },
+      { speaker: "AI", text: "Friends are so important!" },
+    ],
+    review: ["I have a few close friends.", "We eat and talk together.", "We meet on weekends."],
+    level: "easy",
+    tags: ["friends", "social"],
+  },
+  // ── 23. 우리 집
+  {
+    id: 23,
+    title: "우리 집",
+    turns: [
+      { speaker: "AI", text: "Do you live alone?" },
+      { speaker: "USER", hint: "No, I live with my family." },
+      { speaker: "AI", text: "What is your home like?" },
+      { speaker: "USER", hint: "It's an apartment." },
+      { speaker: "AI", text: "Do you like it?" },
+      { speaker: "USER", hint: "Yes, it's comfortable." },
+      { speaker: "AI", text: "That sounds cozy!" },
+    ],
+    review: ["No, I live with my family.", "It's an apartment.", "Yes, it's comfortable."],
+    level: "easy",
+    tags: ["home", "daily"],
+  },
+  // ── 24. 휴가 계획
+  {
+    id: 24,
+    title: "휴가 계획",
+    turns: [
+      { speaker: "AI", text: "Do you have a vacation plan?" },
+      { speaker: "USER", hint: "Yes, I'm planning a trip." },
+      { speaker: "AI", text: "Where are you going?" },
+      { speaker: "USER", hint: "I'm going to Jeju Island." },
+      { speaker: "AI", text: "How long will you stay?" },
+      { speaker: "USER", hint: "For three days." },
+      { speaker: "AI", text: "Jeju is beautiful — enjoy!" },
+    ],
+    review: ["Yes, I'm planning a trip.", "I'm going to Jeju Island.", "For three days."],
+    level: "easy",
+    tags: ["vacation", "travel"],
+  },
+  // ── 25. 몸이 아플 때
+  {
+    id: 25,
+    title: "몸이 아플 때",
+    turns: [
+      { speaker: "AI", text: "Are you okay? You look tired." },
+      { speaker: "USER", hint: "I have a headache." },
+      { speaker: "AI", text: "Did you sleep well?" },
+      { speaker: "USER", hint: "No, I didn't sleep well." },
+      { speaker: "AI", text: "You should rest today." },
+      { speaker: "USER", hint: "Yes, I'll take a rest." },
+      { speaker: "AI", text: "I hope you feel better soon!" },
+    ],
+    review: ["I have a headache.", "No, I didn't sleep well.", "Yes, I'll take a rest."],
+    level: "easy",
+    tags: ["health", "feelings"],
+  },
+  // ── 26. 드라마 추천
+  {
+    id: 26,
+    title: "드라마 추천",
+    turns: [
+      { speaker: "AI", text: "Do you watch Korean dramas?" },
+      { speaker: "USER", hint: "Yes, I love Korean dramas." },
+      { speaker: "AI", text: "What drama are you watching now?" },
+      { speaker: "USER", hint: "I'm watching Squid Game." },
+      { speaker: "AI", text: "Is it good?" },
+      { speaker: "USER", hint: "Yes, it's very exciting." },
+      { speaker: "AI", text: "I've heard it's amazing!" },
+    ],
+    review: ["Yes, I love Korean dramas.", "I'm watching Squid Game.", "Yes, it's very exciting."],
+    level: "easy",
+    tags: ["drama", "hobby"],
+  },
+  // ── 27. 식당에서 주문
+  {
+    id: 27,
+    title: "식당에서 주문",
+    turns: [
+      { speaker: "AI", text: "What would you like to order?" },
+      { speaker: "USER", hint: "I'd like the fried rice." },
+      { speaker: "AI", text: "Would you like anything to drink?" },
+      { speaker: "USER", hint: "I'd like some water, please." },
+      { speaker: "AI", text: "Anything else?" },
+      { speaker: "USER", hint: "No, that's all. Thank you." },
+      { speaker: "AI", text: "Coming right up!" },
+    ],
+    review: ["I'd like the fried rice.", "I'd like some water, please.", "No, that's all. Thank you."],
+    level: "easy",
+    tags: ["restaurant", "daily"],
+  },
+  // ── 28. 비 오는 날
+  {
+    id: 28,
+    title: "비 오는 날",
+    turns: [
+      { speaker: "AI", text: "It's raining today. Did you bring an umbrella?" },
+      { speaker: "USER", hint: "No, I forgot." },
+      { speaker: "AI", text: "Do you like rainy days?" },
+      { speaker: "USER", hint: "Sometimes. It's cozy inside." },
+      { speaker: "AI", text: "What do you do on rainy days?" },
+      { speaker: "USER", hint: "I read a book at home." },
+      { speaker: "AI", text: "That sounds so relaxing!" },
+    ],
+    review: ["No, I forgot.", "Sometimes. It's cozy inside.", "I read a book at home."],
+    level: "easy",
+    tags: ["weather", "daily"],
+  },
+  // ── 29. 헬스장
+  {
+    id: 29,
+    title: "헬스장",
+    turns: [
+      { speaker: "AI", text: "Do you go to the gym?" },
+      { speaker: "USER", hint: "Yes, I go three times a week." },
+      { speaker: "AI", text: "What do you do there?" },
+      { speaker: "USER", hint: "I lift weights." },
+      { speaker: "AI", text: "How long do you work out?" },
+      { speaker: "USER", hint: "About one hour." },
+      { speaker: "AI", text: "That's impressive, keep it up!" },
+    ],
+    review: ["Yes, I go three times a week.", "I lift weights.", "About one hour."],
+    level: "easy",
+    tags: ["exercise", "health"],
+  },
+  // ── 30. 나의 꿈
+  {
+    id: 30,
+    title: "나의 꿈",
+    turns: [
+      { speaker: "AI", text: "What is your dream?" },
+      { speaker: "USER", hint: "I want to travel the world." },
+      { speaker: "AI", text: "Which country do you want to visit first?" },
+      { speaker: "USER", hint: "I want to visit Paris first." },
+      { speaker: "AI", text: "What will you do there?" },
+      { speaker: "USER", hint: "I want to see the Eiffel Tower." },
+      { speaker: "AI", text: "Dream big — you can do it!" },
+    ],
+    review: ["I want to travel the world.", "I want to visit Paris first.", "I want to see the Eiffel Tower."],
+    level: "easy",
+    tags: ["dream", "travel"],
   },
 ];
