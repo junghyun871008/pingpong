@@ -117,7 +117,7 @@ export default function MissionScreen({ mission, onFinish, onExit }: Props) {
 
       <div className="mt-6 space-y-4 rounded-3xl bg-slate-100 p-4 ring-1 ring-slate-200">
         {visibleTurns.map((turn, index) => (
-          <MissionBubble key={index} turn={turn} answer={answers[index]} correction={corrections[index]} />
+          <MissionBubble key={index} turn={turn} answer={answers[index]} correction={corrections[index]} index={index} />
         ))}
         {loading && (
           <div className="flex justify-start">
@@ -145,7 +145,7 @@ export default function MissionScreen({ mission, onFinish, onExit }: Props) {
                 🎤 말하기 시작
               </button>
             ) : (
-              <button className="h-16 rounded-2xl bg-red-600 text-xl font-black text-white shadow-md active:scale-95"
+              <button className="h-16 rounded-2xl bg-red-600 text-xl font-black text-white shadow-md active:scale-95 animate-micPulse"
                 onClick={() => stopSpeechRecognition(setListening)}>
                 ⏹ 말하기 종료
               </button>

@@ -63,7 +63,7 @@ export default function Page() {
     <div className="min-h-screen bg-slate-100 p-4 pb-safe md:p-8">
       <div className="mx-auto max-w-4xl">
         {screen === "home" && (
-          <HomeScreen
+          <div className="animate-screenFadeIn"><HomeScreen
             title={mission.title}
             reviewItems={reviewItems}
             streak={streak}
@@ -71,7 +71,7 @@ export default function Page() {
             level={level}
             onReady={() => unlockAudio()}
             onStart={() => setScreen("mission")}
-          />
+          /></div>
         )}
         {screen === "mission" && (
           <MissionScreen

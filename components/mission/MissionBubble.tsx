@@ -7,13 +7,18 @@ type Props = {
   turn: Turn;
   answer?: string;
   correction?: CorrectionResult;
+  index?: number;
 };
 
-export default function MissionBubble({ turn, answer, correction }: Props) {
+export default function MissionBubble({ turn, answer, correction, index = 0 }: Props) {
   const isAI = turn.speaker === "AI";
+  const delay = `${Math.min(index * 0.05, 0.3)}s`;
 
   return (
-    <div className={`flex flex-col ${isAI ? "items-start" : "items-end"} gap-2`}>
+    <div
+      className={`flex flex-col ${isAI ? "items-start animate-slideInLeft" : "items-end animate-slideInRight"} gap-2`}
+      style={{ animationDelay: delay }}
+    >
       <div
         className={`max-w-[88%] rounded-2xl px-4 py-3 shadow-md ring-1 ${
           isAI
@@ -43,7 +48,7 @@ export default function MissionBubble({ turn, answer, correction }: Props) {
         {isAI && turn.text && (
           <button
             onClick={() => speakEnglish(turn.text || "")}
-            className="mt-2 rounded-full bg-blue-100 px-3 py-1 text-xs font-black text-blue-800"
+            className="mt-2 rounded-full bg-blue-100 px-3 py-1 text-xs font-black text-blue-800 active:scale-95 transition-transform"
           >
             🔊 다시 듣기
           </button>
@@ -51,13 +56,13 @@ export default function MissionBubble({ turn, answer, correction }: Props) {
       </div>
 
       {!isAI && correction && (
-        <div className="max-w-[90%] rounded-2xl border-2 border-blue-200 bg-blue-50 px-4 py-3 shadow-sm">
+        <div className="max-w-[90%] rounded-2xl border-2 border-blue-200 bg-blue-50 px-4 py-3 shadow-sm animate-slideInRight">
           <div className="text-xs font-black text-blue-700">✅ 이렇게 말하면 더 자연스러워요</div>
           <div className="mt-1 text-base font-black text-slate-950">{correction.corrected}</div>
           <div className="mt-1 text-sm font-bold text-slate-700">{correction.note}</div>
           <button
             onClick={() => speakEnglish(correction.corrected)}
-            className="mt-2 rounded-full bg-blue-700 px-3 py-1 text-xs font-black text-white"
+            className="mt-2 rounded-full bg-blue-700 px-3 py-1 text-xs font-black text-white active:scale-95 transition-transform"
           >
             🔊 들어보기
           </button>
