@@ -26,24 +26,31 @@ export default function MissionBubble({ turn, answer, correction, index = 0 }: P
             : "bg-blue-700 text-white ring-blue-800"
         }`}
       >
-        <div
-          className={`mb-1 text-xs font-black uppercase tracking-wide ${
-            isAI ? "text-slate-700" : "text-blue-100"
-          }`}
-        >
+        <div className={`mb-1 text-xs font-black uppercase tracking-wide ${
+          isAI ? "text-slate-700" : "text-blue-100"
+        }`}>
           {isAI ? "AI" : "You"}
         </div>
 
-        <div className="text-base font-black leading-7">
-          {isAI ? turn.text : answer || (
-            <span className="text-blue-100">
-              <span className="block">{turn.hint}</span>
-              {turn.hintKo && (
-                <span className="block mt-0.5 text-xs font-bold text-blue-200">{turn.hintKo}</span>
-              )}
-            </span>
-          )}
-        </div>
+        {isAI ? (
+          <div>
+            <div className="text-base font-black leading-7">{turn.text}</div>
+            {turn.textKo && (
+              <div className="mt-0.5 text-xs font-bold text-slate-500">{turn.textKo}</div>
+            )}
+          </div>
+        ) : (
+          <div className="text-base font-black leading-7">
+            {answer || (
+              <span className="text-blue-100">
+                <span className="block">{turn.hint}</span>
+                {turn.hintKo && (
+                  <span className="block mt-0.5 text-xs font-bold text-blue-200">{turn.hintKo}</span>
+                )}
+              </span>
+            )}
+          </div>
+        )}
 
         {isAI && turn.text && (
           <button

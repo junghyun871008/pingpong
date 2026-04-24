@@ -1,6 +1,7 @@
 export type Turn = {
   speaker: "AI" | "USER";
   text?: string;
+  textKo?: string;
   hint?: string;
   hintKo?: string;
 };
