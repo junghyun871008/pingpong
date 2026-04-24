@@ -2,6 +2,7 @@ export type Turn = {
   speaker: "AI" | "USER";
   text?: string;
   hint?: string;
+  hintKo?: string;
 };
 
 export type Mission = {

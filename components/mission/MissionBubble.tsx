@@ -30,7 +30,14 @@ export default function MissionBubble({ turn, answer, correction }: Props) {
         </div>
 
         <div className="text-base font-black leading-7">
-          {isAI ? turn.text : answer || <span className="text-blue-100">힌트: {turn.hint}</span>}
+          {isAI ? turn.text : answer || (
+            <span className="text-blue-100">
+              <span className="block">{turn.hint}</span>
+              {turn.hintKo && (
+                <span className="block mt-0.5 text-xs font-bold text-blue-200">{turn.hintKo}</span>
+              )}
+            </span>
+          )}
         </div>
 
         {isAI && turn.text && (
